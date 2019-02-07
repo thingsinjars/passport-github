@@ -27,13 +27,13 @@ describe('Strategy#userProfile', function() {
         return callback(new Error('wrong url argument'));
 
       if (accessToken != 'token') { return callback(new Error('wrong token argument')); }
-  
+
       callback(null, body, undefined);
     };
-    
-    
+
+
     var profile;
-    
+
     before(function(done) {
       strategy.userProfile('token', function(err, p) {
         if (err) { return done(err); }
@@ -41,7 +41,7 @@ describe('Strategy#userProfile', function() {
         done();
       });
     });
-    
+
     it('should parse profile', function() {
       expect(profile.provider).to.equal('github');
       
@@ -52,11 +52,11 @@ describe('Strategy#userProfile', function() {
       expect(profile.emails).to.have.length(1);
       expect(profile.emails[0].value).to.equal('octocat@github.com');
     });
-    
+
     it('should set raw property', function() {
       expect(profile._raw).to.be.a('string');
     });
-    
+
     it('should set json property', function() {
       expect(profile._json).to.be.an('object');
     });
@@ -83,13 +83,13 @@ describe('Strategy#userProfile', function() {
         return callback(new Error('wrong url argument'));
 
       if (accessToken != 'token') { return callback(new Error('wrong token argument')); }
-  
+
       callback(null, body, undefined);
     };
-    
-    
+
+
     var profile;
-    
+
     before(function(done) {
       strategy.userProfile('token', function(err, p) {
         if (err) { return done(err); }
@@ -97,7 +97,7 @@ describe('Strategy#userProfile', function() {
         done();
       });
     });
-    
+
     it('should parse profile', function() {
       expect(profile.provider).to.equal('github');
 
@@ -116,11 +116,11 @@ describe('Strategy#userProfile', function() {
       expect(profile.emails[2].verified).to.equal(false);
       expect(profile.emails[2].primary).to.equal(false);
     });
-    
+
     it('should set raw property', function() {
       expect(profile._raw).to.be.a('string');
     });
-    
+
     it('should set json property', function() {
       expect(profile._json).to.be.an('object');
     });
