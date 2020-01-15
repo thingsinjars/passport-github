@@ -47,5 +47,26 @@ describe('profile.parse', function() {
       expect(profile.emails).to.be.undefined;
     });
   });
+
+  describe('example profile with `node_id`', function() {
+    var profile;
+
+    before(function(done) {
+      fs.readFile('test/data/octocat-20190115.json', 'utf8', function(err, data) {
+        if (err) { return done(err); }
+        profile = parse(data);
+        done();
+      });
+    });
+
+    it('should parse profile', function() {
+      expect(profile.id).to.equal('583231');
+      expect(profile.nodeId).to.equal('MDQ6VXNlcjU4MzIzMQ==');
+      expect(profile.username).to.equal('octocat');
+      expect(profile.displayName).to.equal('The Octocat');
+      expect(profile.profileUrl).to.equal('https://github.com/octocat');
+      expect(profile.emails).to.be.undefined;
+    });
+  });
   
 });
